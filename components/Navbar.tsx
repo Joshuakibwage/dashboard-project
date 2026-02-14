@@ -13,7 +13,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
-
+import { SidebarTrigger } from "@/components/ui/sidebar";
 
 //icons
 import { Moon, LogOut, Settings, User, Sun } from "lucide-react";
@@ -28,7 +28,7 @@ const Navbar = () => {
   return (
     <nav className="p-4 flex justify-between items-center w-[94%] mx-auto">
       {/* left */}
-      collapse button
+      <SidebarTrigger className="cursor-pointer" />
       {/* right */}
         <div className="flex items-center gap-4">
             <Link href="/">Dashboard</Link>
