@@ -58,10 +58,12 @@ const Navbar = () => {
             {/* User Menu */}
             <DropdownMenu>
                 <DropdownMenuTrigger asChild>
+                    <Button variant="ghost" className="relative h-8 w-8 rounded-full">
                         <Avatar>
                             <AvatarImage src="https://github.com/shadcn.png" />
                             <AvatarFallback>JK</AvatarFallback>
                         </Avatar>
+                    </Button>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent sideOffset={4}>
                     <DropdownMenuGroup>
