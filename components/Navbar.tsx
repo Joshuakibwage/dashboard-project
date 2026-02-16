@@ -14,9 +14,10 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import { SidebarTrigger } from "@/components/ui/sidebar";
+import { USERS } from "@/lib/users";
 
 //icons
-import { Moon, LogOut, Settings, User, Sun } from "lucide-react";
+import { Moon, LogOut, Settings, User, Sun, Users } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 
 
@@ -33,6 +34,34 @@ const Navbar = () => {
         <div className="flex items-center gap-4">
             <Link href="/">Dashboard</Link>
             
+            {/* Users Menu */}
+            <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                    <Button variant="outline" size="icon">
+                        <Users className="h-[1.2rem] w-[1.2rem]" />
+                        <span className="sr-only">View users</span>
+                    </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="end" className="w-56">
+                    <DropdownMenuLabel>Users</DropdownMenuLabel>
+                    <DropdownMenuSeparator />
+                    {USERS.map((user) => (
+                        <Link key={user.id} href={`/users/${user.username}`}>
+                            <DropdownMenuItem className="cursor-pointer">
+                                <Avatar className="h-6 w-6 mr-2">
+                                    <AvatarImage src={user.avatar} />
+                                    <AvatarFallback>{user.name.split(' ').map(n => n[0]).join('')}</AvatarFallback>
+                                </Avatar>
+                                <div className="flex flex-col">
+                                    <span className="text-sm font-medium">{user.name}</span>
+                                    <span className="text-xs text-muted-foreground">{user.role}</span>
+                                </div>
+                            </DropdownMenuItem>
+                        </Link>
+                    ))}
+                </DropdownMenuContent>
+            </DropdownMenu>
+
             {/* Theme Menu */}
             <DropdownMenu>
                 <DropdownMenuTrigger asChild>
